@@ -1,0 +1,88 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-buttons type="start">
+      <button ion-button icon-only menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="onNewRecipe()">
+        <ion-icon name="add"></ion-icon>
+      </button>
+      <button ion-button icon-only (click)="onShowOptions($event)">
+        <ion-icon name="more"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title type="center">Recipes</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-card *ngFor="let recipe of recipes; let i = index"
+  (click)="onLoadRecipe(recipe, i)">
+  <img src="../../assets/imgs/chef.png" alt="">
+    <ion-card-content>
+        <button
+        ion-item
+        >
+        <h2>{{ recipe.title }}</h2>
+        <ion-note>{{ recipe.difficulty }}</ion-note>
+        <p>
+          {{ recipe.description }}
+        </p>
+      </button>
+    </ion-card-content>
+    <ion-row no-padding>
+        <ion-col>
+          <button ion-button clear small color="danger" icon-left (click)="favorite(card)">
+            <ion-icon name="star"></ion-icon>
+            Favorite
+          </button>
+        </ion-col>
+        <ion-col text-right>
+          <button ion-button clear small color="danger" icon-left (click)="share(card)">
+            <ion-icon name="share-alt"></ion-icon>
+            Share
+          </button>
+      </ion-col>
+    </ion-row>
+  </ion-card>
+</ion-content>
+
+<!-- <ion-content>
+  <ion-card *ngFor="let recipe of recipes">
+    <img [src]="recipes.imageUrl" (click)="cardTapped(card)"/>
+    <ion-card-content>
+      <h2 class="card-title">
+        {{recipe.title}}
+      </h2>
+      <p>
+        {{recipe.description}}
+      </p>
+    </ion-card-content>
+    <ion-row no-padding>
+      <ion-col>
+        <button ion-button clear small color="danger" icon-left (click)="favorite(card)">
+          <ion-icon name="star"></ion-icon>
+          Favorite
+        </button>
+      </ion-col>
+      <ion-col text-center>
+          <button ion-button clear small color="danger" icon-left (click)="listen(card)">
+            <ion-icon name="musical-notes"></ion-icon>
+            Listen
+          </button>
+      </ion-col>
+      <ion-col text-right>
+        <button ion-button clear small color="danger" icon-left (click)="share(card)">
+          <ion-icon name="share-alt"></ion-icon>
+          Share
+        </button>
+    </ion-col>
+    </ion-row>
+  </ion-card>
+</ion-content> -->

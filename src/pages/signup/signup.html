@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-navbar transparent>
+    <ion-buttons start>
+      <button ion-button icon-only menuToggle>
+          <img src="../../assets/imgs/menu.png" alt="" class="menu">
+      </button>
+    </ion-buttons>
+    <ion-title></ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-slides pager="false" autoplay="2000" loop="true" speed="1500" effect="fade">
+    <ion-slide class="slide-background swiper-no-swiping" *ngFor="let background of backgrounds"
+      [ngStyle]="{'background-image': 'url(' + background +')'}">
+    </ion-slide>
+  </ion-slides>
+  <div class="login-container">
+    <img class="logo" src="../../assets/imgs/avatar.png">
+    <img class="welcome" src="../../assets/imgs/welcome.png">
+    <div class="form-container">
+      <form #f="ngForm" (ngSubmit)="onSignup(f)">
+        <!-- <ion-list> -->
+            <div class="signup">
+                <h1>SignUp</h1>
+                <img src="../../assets/imgs/signup-icon.png" alt="" class="signup-icon">
+              </div>
+          <ion-item>
+            <ion-label fixed>Email</ion-label>
+            <ion-input type="email" ngModel name="email" required></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label fixed>Password</ion-label>
+            <ion-input type="password" ngModel name="password" required [minlength]="6">
+            </ion-input>
+          </ion-item>
+        <!-- </ion-list> -->
+        <button ion-button block type="submit" [disabled]="!f.valid" class="signup__button">Signup</button>
+      </form>
+    </div>
+  </div>
+</ion-content>

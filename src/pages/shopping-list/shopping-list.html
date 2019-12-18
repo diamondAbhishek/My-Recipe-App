@@ -1,0 +1,56 @@
+<ion-header>
+
+  <ion-navbar transparent>
+      <ion-buttons type="start">
+        <button ion-button icon-only menuToggle>
+            <img src="../../assets/imgs/mdi_menu.png" alt="" class="menu">
+        </button>
+      </ion-buttons>
+      <ion-buttons end>
+        <button ion-button icon-only (click)="onShowOptions($event)">
+          <ion-icon name="more"></ion-icon>
+        </button>
+      </ion-buttons>
+    <ion-title>Shopping List</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  
+  <form #f="ngForm" (ngSubmit)="onAddItem(f)">
+    <ion-list>
+      <img src="../../assets/imgs/empty_cart.svg" alt="" class="Cart">
+      <ion-item>
+        <ion-label fixed>Name</ion-label>
+        <ion-input
+          type="text"
+          name="ingredientName"
+          placeholder="Milk"
+          ngModel
+          required></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label fixed>Quantity</ion-label>
+        <ion-input
+          type="number"
+          name="amount"
+          placeholder="2"
+          ngModel
+          required></ion-input>
+      </ion-item>
+    </ion-list>
+    <button
+      ion-button
+      type="submit"
+      block
+      [disabled]="!f.valid">Add Item</button>
+  </form>
+  <ion-list>
+    <!-- <ion-title>Tab To Delete</ion-title> -->
+    <ion-item *ngFor="let item of listItems; let i = index" (click)="onCheckItem(i)">
+      <h3>{{ item.name }} ({{ item.amount }})</h3>
+    </ion-item>
+  </ion-list>
+</ion-content>
