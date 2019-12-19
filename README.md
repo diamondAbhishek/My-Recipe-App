@@ -22,5 +22,8 @@
   npm install
 ```
 ```
+  npm install ionic cordova -g
+```
+```
   ionic server
 ```
